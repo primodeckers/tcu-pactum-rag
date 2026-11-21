@@ -57,7 +57,7 @@ Há ainda um dilema próprio da Administração Pública: modelos proprietários
 | | Entrega | Descrição |
 |---|---|---|
 | 💬 | **Assistente de consulta** | Pergunta em linguagem natural, resposta com os acórdãos citados |
-| 📚 | **Benchmark TCU-Pactum-RAG** | No mínimo 100 pares pergunta–resposta validados (meta de até 250), publicados no Hugging Face |
+| 📚 | **Benchmark TCU-Pactum-RAG** | No mínimo 100 pares pergunta–resposta revisados pela equipe (meta de até 250), publicados no Hugging Face |
 | 🔧 | **Pipeline reprodutível** | Ingestão, indexação, recuperação, geração e avaliação em código aberto |
 | 📊 | **Comparativo empírico** | Qualidade, latência e custo: APIs × modelos abertos em uma RTX 4090 |
 | 🧭 | **Taxonomia de alucinações jurídicas** | Catálogo dos tipos de erro observados |
@@ -125,7 +125,10 @@ pie showData
 | 🕰️ | Evolução jurisprudencial | Mudança de entendimento, inclusive na transição da 8.666 para a 14.133 |
 | 🚫 | Fora de escopo | Pergunta sem respaldo na base; mede se o modelo se abstém ou inventa |
 
-Uma amostra é revisada por 2 a 3 especialistas, com a concordância medida pelo kappa de Cohen ou de Fleiss.
+Todos os pares são revisados pela equipe.
+
+> [!TIP]
+> **Extensão opcional:** havendo disponibilidade, uma amostra será validada por especialistas externos, com a concordância medida pelo kappa de Cohen ou de Fleiss.
 
 ### 3️⃣ Pipeline RAG
 
@@ -193,7 +196,7 @@ flowchart TD
 | ☁️ LLMs proprietários | Um ou dois modelos de ponta (GPT, Claude ou Gemini) e o Sabiá | API |
 | 🧬 Embeddings | BGE-M3, multilingual-E5-large | GPU local |
 | 🥇 Reranker | bge-reranker-v2-m3 | GPU local |
-| 👩‍⚖️ Juiz (LLM-as-a-Judge) | Modelo de maior porte, diferente dos avaliados, calibrado com rótulos humanos | API |
+| 👩‍⚖️ Juiz (LLM-as-a-Judge) | Modelo de maior porte, diferente dos avaliados, com uma amostra das notas conferida pela equipe | API |
 
 As versões exatas serão fixadas no início dos experimentos. Orquestração prevista com LangChain ou LlamaIndex, e RAGAS como apoio às métricas.
 
@@ -214,7 +217,7 @@ Toda a parte local roda em uma única estação com **NVIDIA RTX 4090 de 24 GB d
 | ✍️ | Geração | Fidelidade ao contexto, correção factual, exatidão da citação |
 | 🛡 | Segurança | Taxa de alucinação e taxa de abstenção correta |
 | 💰 | Viabilidade | Latência por consulta e custo por mil consultas (API × aquisição e energia da GPU) |
-| 🤝 | Confiabilidade | Concordância entre o LLM-juiz e avaliadores humanos |
+| 🤝 | Confiabilidade | Conferência manual de uma amostra das notas do LLM-juiz |
 
 ## 📅 Cronograma
 
@@ -232,7 +235,7 @@ gantt
     section Dados
     Coleta e corpus                :2026-11-22, 8d
     Golden Dataset (1ª versão)     :2026-11-30, 7d
-    Validação humana               :2026-12-20, 12d
+    Revisão do Golden Dataset      :2026-12-20, 12d
     section Pipeline
     Chunking e indexação           :2026-11-30, 7d
     Recuperação e geração          :2026-12-07, 7d

@@ -36,11 +36,12 @@ Construir um **benchmark aberto em português** com acórdãos do TCU sobre lici
 | Modelos locais | 7B a 14B | 7B a 14B, mais um de 27B a 32B como teto |
 | Juiz | Sem definição de onde roda | Via API |
 | Experimentos | Matriz completa | Dois estágios: recuperação primeiro, geração depois |
+| Validação por especialistas | Parte do escopo | Extensão opcional; a equipe revisa todos os pares |
 
 ## 4. O que a proposta promete entregar
 
 1. **Assistente de consulta demonstrável** — pergunta em linguagem natural, resposta com os acórdãos citados; apresentado em funcionamento em 19/12.
-2. **Benchmark TCU-Pactum-RAG** — no mínimo 100 pares pergunta–resposta validados (meta de até 250), com acórdãos de referência, publicado no Hugging Face.
+2. **Benchmark TCU-Pactum-RAG** — no mínimo 100 pares pergunta–resposta revisados pela equipe (meta de até 250), com acórdãos de referência, publicado no Hugging Face.
 3. **Pipeline reprodutível** — código aberto de ingestão, indexação, recuperação, geração e avaliação.
 4. **Comparativo empírico** — qualidade, latência e custo das configurações, confrontando APIs com modelos abertos em uma RTX 4090.
 5. **Taxonomia de alucinações jurídicas** — catálogo dos tipos de erro observados.
@@ -76,7 +77,7 @@ Regras de trabalho que decorrem disso:
 ### Fase 2 — Golden Dataset
 
 - [ ] Gerar perguntas a partir dos enunciados da Jurisprudência Selecionada (LLM + revisão humana); o acórdão de origem é o gabarito de recuperação.
-- [ ] Chegar ao mínimo de 100 pares validados, respeitando a composição:
+- [ ] Chegar ao mínimo de 100 pares revisados, respeitando a composição:
 
   | Tipo | O que testa | Participação |
   |---|---|---|
@@ -86,7 +87,8 @@ Regras de trabalho que decorrem disso:
   | Fora de escopo | Pergunta sem respaldo; mede abstenção | ≈ 20% |
 
 - [ ] Registrar para cada item: pergunta, resposta de referência, acórdãos de suporte, tipo de pergunta.
-- [ ] Validar uma amostra com 2–3 especialistas e calcular a concordância (kappa de Cohen ou Fleiss).
+- [ ] Revisar todos os pares em equipe.
+- [ ] **Plus, se houver tempo e gente:** validar uma amostra com 2–3 especialistas e calcular a concordância (kappa de Cohen ou Fleiss).
 - [ ] Expandir até 250 pares se houver tempo.
 
 ### Fase 3 — Pipeline RAG e assistente
@@ -120,9 +122,9 @@ Cada etapa precisa ser intercambiável por configuração.
   | Geração | Fidelidade ao contexto, correção factual, exatidão da citação |
   | Segurança | Taxa de alucinação, taxa de abstenção correta (fora de escopo) |
   | Viabilidade | Latência por consulta; custo por mil consultas (API vs. aquisição e energia da RTX 4090) |
-  | Confiabilidade | Concordância entre LLM-juiz e avaliadores humanos |
+  | Confiabilidade | Conferência manual de uma amostra das notas do LLM-juiz |
 
-- [ ] Configurar o LLM-as-a-Judge: modelo de maior porte, diferente dos avaliados, via API, calibrado com rótulos humanos (RAGAS como apoio).
+- [ ] Configurar o LLM-as-a-Judge: modelo de maior porte, diferente dos avaliados, via API, com uma amostra das notas conferida pela equipe (RAGAS como apoio).
 - [ ] Analisar os resultados por tipo de pergunta.
 - [ ] Classificar os erros e montar a taxonomia de alucinações (número de acórdão inexistente, voto vencido tratado como decisão, entendimento superado apresentado como vigente etc.).
 
@@ -145,7 +147,7 @@ Sugestão de distribuição das fases nos prazos da disciplina; não consta da p
 | 07/12 – 13/12 | Pipeline completo, teste-piloto e estágio 1 |
 | 14/12 – 18/12 | Estágio 2 parcial, assistente e preparação da apresentação |
 | **19/12** | **Apresentação** |
-| 20/12 – 03/01 | Estágio 2 completo, validação humana, análise de erros |
+| 20/12 – 03/01 | Estágio 2 completo, revisão do Golden Dataset, análise de erros |
 | 04/01 – 07/01 | Redação final do relatório, limpeza do repositório, publicação do dataset |
 | **08/01** | **Relatório e GitHub** |
 
@@ -165,9 +167,9 @@ O assistente de consulta ainda não tem responsável definido.
 
 | Risco | Mitigação |
 |---|---|
-| Falta de especialistas para validar | Reduzir a amostra de validação humana e usar o enunciado da Jurisprudência Selecionada como gabarito |
+| Sem validação externa | A validação por especialistas é extensão opcional; o gabarito parte dos enunciados do TCU e a equipe revisa todos os pares |
 | Infraestrutura concentrada em uma única GPU | Execução em lote com salvamento parcial; modelos limitados a 24 GB; GPU em nuvem como contingência |
-| Viés do LLM-juiz | Calibrar com rótulos humanos; juiz diferente dos modelos avaliados |
+| Viés do LLM-juiz | Conferir manualmente uma amostra das notas; juiz diferente dos modelos avaliados |
 | LGPD e ética | Só decisões públicas; acórdãos sigilosos não estão na base aberta |
 | Prazo curto até a apresentação | Priorizar o assistente e o estágio 1; reduzir o número de modelos antes de reduzir a qualidade do Golden Dataset |
 | Carga concentrada em uma pessoa | Recuperação, geração e GPU estão com o Renê; redistribuir parte da geração ou do assistente |
@@ -180,6 +182,6 @@ O assistente de consulta ainda não tem responsável definido.
 - [ ] LangChain ou LlamaIndex.
 - [ ] Quais modelos abertos e proprietários, e em que versões.
 - [ ] Qual modelo será o juiz.
-- [ ] Quem serão os especialistas validadores.
+- [ ] Se haverá validação por especialistas (plus) e quem seriam.
 - [ ] Formato do relatório: ensaio ou artigo.
 - [ ] Data interna de corte para enviar experimentos à GPU antes de 19/12.
