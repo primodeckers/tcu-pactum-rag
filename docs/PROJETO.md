@@ -1,4 +1,4 @@
-# JurisTCU-RAG — o que temos que fazer
+# TCU-Pactum-RAG — o que temos que fazer
 
 Guia de trabalho do Projeto Final da disciplina de IA Generativa / LLMs (Prof. Marcelo Pita).
 Resume as exigências da disciplina e o que a nossa proposta nos compromete a entregar.
@@ -40,7 +40,7 @@ Construir um **benchmark aberto em português** com acórdãos do TCU sobre lici
 ## 4. O que a proposta promete entregar
 
 1. **Assistente de consulta demonstrável** — pergunta em linguagem natural, resposta com os acórdãos citados; apresentado em funcionamento em 19/12.
-2. **Benchmark JurisTCU-RAG** — no mínimo 100 pares pergunta–resposta validados (meta de até 250), com acórdãos de referência, publicado no Hugging Face.
+2. **Benchmark TCU-Pactum-RAG** — no mínimo 100 pares pergunta–resposta validados (meta de até 250), com acórdãos de referência, publicado no Hugging Face.
 3. **Pipeline reprodutível** — código aberto de ingestão, indexação, recuperação, geração e avaliação.
 4. **Comparativo empírico** — qualidade, latência e custo das configurações, confrontando APIs com modelos abertos em uma RTX 4090.
 5. **Taxonomia de alucinações jurídicas** — catálogo dos tipos de erro observados.

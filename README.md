@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/assets/banner.svg" alt="JurisTCU-RAG: benchmark aberto de RAG para a jurisprudência do TCU" width="100%">
+  <img src="docs/assets/banner.svg" alt="TCU-Pactum-RAG: benchmark aberto de RAG para a jurisprudência do TCU" width="100%">
 </p>
 
 <p align="center">
@@ -57,7 +57,7 @@ Há ainda um dilema próprio da Administração Pública: modelos proprietários
 | | Entrega | Descrição |
 |---|---|---|
 | 💬 | **Assistente de consulta** | Pergunta em linguagem natural, resposta com os acórdãos citados |
-| 📚 | **Benchmark JurisTCU-RAG** | No mínimo 100 pares pergunta–resposta validados (meta de até 250), publicados no Hugging Face |
+| 📚 | **Benchmark TCU-Pactum-RAG** | No mínimo 100 pares pergunta–resposta validados (meta de até 250), publicados no Hugging Face |
 | 🔧 | **Pipeline reprodutível** | Ingestão, indexação, recuperação, geração e avaliação em código aberto |
 | 📊 | **Comparativo empírico** | Qualidade, latência e custo: APIs × modelos abertos em uma RTX 4090 |
 | 🧭 | **Taxonomia de alucinações jurídicas** | Catálogo dos tipos de erro observados |
@@ -222,7 +222,7 @@ As datas em destaque são os prazos da disciplina. A distribuição das fases en
 
 ```mermaid
 gantt
-    title JurisTCU-RAG — novembro de 2026 a janeiro de 2027
+    title TCU-Pactum-RAG — novembro de 2026 a janeiro de 2027
     dateFormat YYYY-MM-DD
     axisFormat %d/%m
     section Disciplina

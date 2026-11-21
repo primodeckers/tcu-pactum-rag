@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" width="1200" height="320" role="img" aria-label="JurisTCU-RAG: benchmark aberto de RAG para a jurisprudência do TCU">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" width="1200" height="320" role="img" aria-label="TCU-Pactum-RAG: benchmark aberto de RAG para a jurisprudência do TCU">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#14254A"/>
@@ -28,7 +28,7 @@
     <path d="M24 40h32M40 24v32" stroke="#F2C14E" stroke-width="3"/>
   </g>
 
-  <text x="430" y="138" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="68" font-weight="700" fill="#FFFFFF">JurisTCU-RAG</text>
+  <text x="430" y="138" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="68" font-weight="700" fill="#FFFFFF">TCU-Pactum-RAG</text>
   <text x="432" y="186" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="25" fill="#DCE6F7">Benchmark aberto em português para avaliar RAG</text>
   <text x="432" y="220" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="25" fill="#DCE6F7">na jurisprudência do TCU sobre licitações e contratos</text>
   <rect x="432" y="244" width="96" height="5" rx="2.5" fill="#F2C14E"/>
